@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet,Button } from "react-native";
 
 const TrackCreateScreen = () => {
     return (
-        <View>
-            <Text></Text>
+        <View style={styles.container}>
+            <Text>Hello world</Text>
+           
         </View>
     );
 };

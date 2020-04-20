@@ -11,14 +11,21 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { render } from "react-dom";
 
-export default function App() {
-    render
-    return (
-        <View style={styles.container}>
-            <Text>Git 12312</Text>
-        </View>
-    );
-}
+const switchNavigator = createSwitchNavigator({
+    loginFlow: createStackNavigator({
+        Signup: SignUpScreen,
+        Signin: SignInScreen,
+    }),
+    mainFlow: createBottomTabNavigator({
+        trackListFlow: createStackNavigator({
+            TrackList: TrackListScreen,
+            TrackDetail: TrackDetailScreen,
+        }),
+        TrackCreate: TrackCreateScreen,
+        Account: AccountScreen,
+    }),
+});
+export default createAppContainer(switchNavigator);
 
 const styles = StyleSheet.create({
     container: {
