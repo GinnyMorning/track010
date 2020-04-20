@@ -9,7 +9,7 @@ import TrackListScreen from "./src/Screens/TrackListScreen";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { render } from "react-dom";
+import { Provider as AuthProvider } from "./src/Context/AuthContext";
 
 const switchNavigator = createSwitchNavigator({
     loginFlow: createStackNavigator({
@@ -25,7 +25,14 @@ const switchNavigator = createSwitchNavigator({
         Account: AccountScreen,
     }),
 });
-export default createAppContainer(switchNavigator);
+const App = createAppContainer(switchNavigator);
+export default () => {
+    return (
+        <AuthProvider>
+            <App />
+        </AuthProvider>
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
