@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import AccountScreen from "./src/Screens/AccountScreen";
-import SignInScreen from "./src/Screens/Sign-InScreen";
+import SignInScreen from "./src/Screens/SignInScreen";
 import SignUpScreen from "./src/Screens/SignUpScreen";
 import TrackCreateScreen from "./src/Screens/TrackCreateScreen";
 import TrackDetailScreen from "./src/Screens/TrackDetailScreen";
