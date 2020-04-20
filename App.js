@@ -6,11 +6,16 @@ import SignUpScreen from "./src/Screens/SignUpScreen";
 import TrackCreateScreen from "./src/Screens/TrackCreateScreen";
 import TrackDetailScreen from "./src/Screens/TrackDetailScreen";
 import TrackListScreen from "./src/Screens/TrackListScreen";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { render } from "react-dom";
 
 export default function App() {
+    render
     return (
         <View style={styles.container}>
-            <Text>Git test</Text>
+            <Text>Git 12312</Text>
         </View>
     );
 }
