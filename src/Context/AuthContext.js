@@ -1,7 +1,7 @@
 import createDataContext from "./createDataContext";
 
-const authReducer = (state, actions) => {
-    switch (actions.type) {
+const authReducer = (state, action) => {
+    switch (action.type) {
         default:
             return state;
     }
