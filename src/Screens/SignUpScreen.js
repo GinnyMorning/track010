@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import Spacer from "../Components/Spacer";
+import { Context as AuthContext } from "../Context/AuthContext";
 
 const SignUpScreen = ({ navigation }) => {
+    const { state, signUp } = useContext(AuthContext);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     return (
@@ -28,8 +30,12 @@ const SignUpScreen = ({ navigation }) => {
                 autoCorrect={false}
                 textContentType="newPassword"
             />
+            <Spacer />
             <Spacer>
-                <Button title="Sign Up" />
+                <Button
+                    title="Sign Up"
+                    onPress={() => signUp({ email, password })}
+                />
             </Spacer>
         </View>
     );
