@@ -14,7 +14,7 @@ const SignUpScreen = ({ navigation }) => {
                 <Text h3>Sign Up for Tracker</Text>
             </Spacer>
             <Input
-                label="Email"
+                label="E-mail"
                 value={email}
                 onChangeText={(newEmail) => setEmail(newEmail)} // or onChangeText={setEmail}
                 autoCapitalize="none"
@@ -31,6 +31,9 @@ const SignUpScreen = ({ navigation }) => {
                 textContentType="newPassword"
             />
             <Spacer />
+            {state.errorMessage ? (
+                <Text style={styles.errorMess}>{state.errorMessage}</Text>
+            ) : null}
             <Spacer>
                 <Button
                     title="Sign Up"
@@ -52,6 +55,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingBottom: 200,
+    },
+    errorMess: {
+        color: "red",
+        fontSize: 15,
+        marginLeft: 15,
+        marginTop: 15,
     },
 });
 
