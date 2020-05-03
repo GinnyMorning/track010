@@ -9,7 +9,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
     return (
         <>
             <Spacer>
-                <Text h3>Sign Up for Tracker</Text>
+                <Text h3>{headerText}</Text>
             </Spacer>
             <Input
                 label="E-mail"
