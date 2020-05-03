@@ -1,45 +1,24 @@
-import React, { useState, useContext } from "react";
-import { View, StyleSheet } from "react-native";
-import { Text, Input, Button } from "react-native-elements";
-import Spacer from "../Components/Spacer";
+import React, { useContext } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Context as AuthContext } from "../Context/AuthContext";
+import AuthForm from "../Components/AuthForm";
+import NavLink from "../Components/NavLink";
 
 const SignUpScreen = ({ navigation }) => {
     const { state, signUp } = useContext(AuthContext);
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+
     return (
         <View style={styles.container}>
-            <Spacer>
-                <Text h3>Sign Up for Tracker</Text>
-            </Spacer>
-            <Input
-                label="E-mail"
-                value={email}
-                onChangeText={(newEmail) => setEmail(newEmail)} // or onChangeText={setEmail}
-                autoCapitalize="none"
-                autoCorrect={false}
+            <AuthForm
+                headerText="Sign Up For Tracker"
+                errorMessage={state.errorMessage}
+                onSubmit={({ email, password }) => signUp({ email, password })}
+                submitButtonText="Sign up"
             />
-            <Spacer />
-            <Input
-                secureTextEntry={true}
-                label="Password"
-                value={password}
-                onChangeText={(newPassword) => setPassword(newPassword)} // or onChangeText={setPassword}
-                autoCapitalize="none"
-                autoCorrect={false}
-                textContentType="newPassword"
+            <NavLink
+                routeName="Signin"
+                text="Already have account? sign in instead?"
             />
-            <Spacer />
-            {state.errorMessage ? (
-                <Text style={styles.errorMess}>{state.errorMessage}</Text>
-            ) : null}
-            <Spacer>
-                <Button
-                    title="Sign Up"
-                    onPress={() => signUp({ email, password })}
-                />
-            </Spacer>
         </View>
     );
 };
@@ -55,12 +34,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingBottom: 200,
-    },
-    errorMess: {
-        color: "red",
-        fontSize: 15,
-        marginLeft: 15,
-        marginTop: 15,
     },
 });
 
