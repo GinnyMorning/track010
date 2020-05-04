@@ -5,12 +5,12 @@ import AuthForm from "../Components/AuthForm";
 import NavLink from "../Components/NavLink";
 import { Context as AuthContext } from "../Context/AuthContext";
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
     const { state, signIn, clearErrorMessage } = useContext(AuthContext);
     return (
         <View style={styles.container}>
             <NavigationEvents
-                onWillBlur={clearErrorMessage} // When user prepare to navigate out this screen
+                onWillFocus={clearErrorMessage} // When user prepare to navigate out this screen
             />
             <AuthForm
                 headerText="Sign In To Your Account"
