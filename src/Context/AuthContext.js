@@ -7,11 +7,17 @@ const authReducer = (state, action) => {
     switch (action.type) {
         case "add_error":
             return { ...state, errorMessage: action.payload };
-        case "signup":
+        case "signin":
             return { token: action.payload, errorMessage: "" };
+        case "clear_error_message":
+            return { ...state, errorMessage: "" };
         default:
             return state;
     }
+};
+
+const clearErrorMessage = (dispatch) => () => {
+    dispatch({ type: "clear_error_message" });
 };
 
 const signUp = (dispatch) => async ({ email, password }) => {
@@ -24,9 +30,9 @@ const signUp = (dispatch) => async ({ email, password }) => {
             password,
         });
         await AsyncStorage.setItem("token", response.data.token);
-        dispatch({ type: "signup", payload: response.data.token });
+        dispatch({ type: "signin", payload: response.data.token });
         //navigate to main flow
-        navigate('TrackList')
+        navigate("TrackList");
         // console.log(response.data);
     } catch (error) {
         dispatch({
@@ -37,13 +43,24 @@ const signUp = (dispatch) => async ({ email, password }) => {
     }
 };
 
-const signIn = (dispatch) => {
-    return ({ email, password }) => {
-        //step 1: try to sign in
-        //step 2: if success, update the state
-        //step 3: if error, show error message to user
-    };
+const signIn = (dispatch) => async ({ email, password }) => {
+    //step 1: try to sign in
+    try {
+        const response = await trackerApi.post("/signin", { email, password });
+        await AsyncStorage.setItem("token", response.data.token);
+        dispatch({ type: "signin", payload: response.data.token });
+        //navigate to main flow
+        navigate("TrackList");
+    } catch (error) {
+        dispatch({
+            type: "add_error",
+            payload: "Something went wrong with sign in",
+        });
+    }
+    //step 2: if success, update the state
+    //step 3: if error, show error message to user
 };
+
 const signOut = (dispatch) => {
     return () => {
         //try to sign out
@@ -52,6 +69,6 @@ const signOut = (dispatch) => {
 
 export const { Provider, Context } = createDataContext(
     authReducer,
-    { signIn, signOut, signUp },
+    { signIn, signOut, signUp, clearErrorMessage },
     { errorMessage: "", token: null }
 );

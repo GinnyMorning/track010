@@ -4,7 +4,7 @@ import { Context as AuthContext } from "../Context/AuthContext";
 import AuthForm from "../Components/AuthForm";
 import NavLink from "../Components/NavLink";
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = () => {
     const { state, signUp } = useContext(AuthContext);
 
     return (
