@@ -6,6 +6,7 @@ import SignUpScreen from "./src/Screens/SignUpScreen";
 import TrackCreateScreen from "./src/Screens/TrackCreateScreen";
 import TrackDetailScreen from "./src/Screens/TrackDetailScreen";
 import TrackListScreen from "./src/Screens/TrackListScreen";
+import ResolveAuthScreen from "./src/Screens/ResolveAuthScreen";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -13,6 +14,7 @@ import { Provider as AuthProvider } from "./src/Context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
 
 const switchNavigator = createSwitchNavigator({
+    ResolveAuth: ResolveAuthScreen,
     loginFlow: createStackNavigator({
         Signup: SignUpScreen,
         Signin: SignInScreen,
