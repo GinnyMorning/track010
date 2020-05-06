@@ -17,6 +17,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
                 onChangeText={(newEmail) => setEmail(newEmail)} // or onChangeText={setEmail}
                 autoCapitalize="none"
                 autoCorrect={false}
+                keyboardType="email-address"
             />
             <Spacer />
             <Input
@@ -51,5 +52,4 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginTop: 15,
     },
-    
 });
