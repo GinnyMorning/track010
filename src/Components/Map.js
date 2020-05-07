@@ -22,8 +22,8 @@ const Map = () => {
         <MapView
             style={styles.map}
             initialRegion={{
-                latitude: 37.33233,
-                longitude: -122.03121,
+                latitude: 10.784670,
+                longitude: 106.747069,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
             }}>
