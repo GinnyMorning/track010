@@ -4,7 +4,7 @@ const tenMeterWithDegrees = 0.0001;
 
 const getLocations = (increment) => {
     return {
-        timestamp: 10000000,
+        timestamp: Date.now(),
         coords: {
             speed: 0,
             heading: 0,

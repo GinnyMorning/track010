@@ -12,6 +12,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider as AuthProvider } from "./src/Context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
+import { Provider as LocationProvider } from "./src/Context/LocationContext";
 
 const switchNavigator = createSwitchNavigator({
     ResolveAuth: ResolveAuthScreen,
@@ -31,13 +32,15 @@ const switchNavigator = createSwitchNavigator({
 const App = createAppContainer(switchNavigator);
 export default () => {
     return (
-        <AuthProvider>
-            <App
-                ref={(navigator) => {
-                    setNavigator(navigator);
-                }}
-            />
-        </AuthProvider>
+        <LocationProvider>
+            <AuthProvider>
+                <App
+                    ref={(navigator) => {
+                        setNavigator(navigator);
+                    }}
+                />
+            </AuthProvider>
+        </LocationProvider>
     );
 };
 
