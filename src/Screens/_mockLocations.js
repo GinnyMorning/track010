@@ -6,13 +6,13 @@ const getLocations = (increment) => {
     return {
         timestamp: Date.now(),
         coords: {
-            speed: 0,
-            heading: 0,
-            accuracy: 5,
-            altitudeAccuracy: 5,
+            latitude: 10.78467 + increment * tenMeterWithDegrees,
+            longitude: 106.747069 + increment * tenMeterWithDegrees,
             altitude: 5,
-            longitude: 106.747069 + increment + tenMeterWithDegrees,
-            latitude: 10.784670 + increment + tenMeterWithDegrees,
+            accuracy: 5,
+            heading: 0,
+            speed: 0,
+            altitudeAccuracy: 5,
         },
     };
 };
@@ -24,5 +24,4 @@ setInterval(() => {
         location: getLocations(counter),
     });
     counter++;
-});
-
+}, 1000);
