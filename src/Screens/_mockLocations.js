@@ -12,7 +12,6 @@ const getLocations = (increment) => {
             accuracy: 5,
             heading: 0,
             speed: 0,
-            altitudeAccuracy: 5,
         },
     };
 };
