@@ -9,8 +9,9 @@ const Map = () => {
     } = useContext(LocationContext); //only get current location from the state of context
 
     if (!currentLocation) {
-        return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
+        return <ActivityIndicator size='large' style={{ marginTop: 200 }} />;
     } else {
+        console.log(currentLocation.coords);
         return (
             <MapView
                 style={styles.map}
@@ -23,13 +24,12 @@ const Map = () => {
                     ...currentLocation.coords,
                     latitudeDelta: 0.01,
                     longitudeDelta: 0.01,
-                }}
-            >
+                }}>
                 <Circle
                     center={currentLocation.coords}
                     radius={15}
-                    strokeColor="rgba(158,158,255,1.0)"
-                    fillColor="rgba(158,158,255,0.3)"
+                    strokeColor='rgba(158,158,255,1.0)'
+                    fillColor='rgba(158,158,255,0.3)'
                 />
             </MapView>
         );

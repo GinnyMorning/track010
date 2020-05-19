@@ -1,4 +1,4 @@
-import "../Screens/_mockLocations";
+// import "../Screens/_mockLocations";
 import React, { useContext, useCallback } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
@@ -9,9 +9,12 @@ import useLocation from "../hooks/useLocation";
 import TrackForm from "../Components/TrackForm";
 
 const TrackCreateScreen = ({ isFocused }) => {
-    const { state, addLocation } = useContext(LocationContext);
+    const {
+        state: { recording },
+        addLocation,
+    } = useContext(LocationContext);
     const callback = useCallback((location) => {
-        addLocation(location, state.recording);
+        addLocation(location, recording);
     });
     const [err] = useLocation(isFocused, callback);
 
