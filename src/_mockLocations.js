@@ -5,9 +5,10 @@ const tenMeterWithDegrees = 0.0001;
 const getLocations = (increment) => {
     return {
         timestamp: Date.now(),
+        mocked: true,
         coords: {
-            latitude: 10.78467 + increment * tenMeterWithDegrees,
-            longitude: 106.747069 + increment * tenMeterWithDegrees,
+            latitude: 10.783 + increment * tenMeterWithDegrees,
+            longitude: 106.747 + increment * tenMeterWithDegrees,
             altitude: 5,
             accuracy: 5,
             heading: 0,
@@ -23,4 +24,7 @@ setInterval(() => {
         location: getLocations(counter),
     });
     counter++;
+    // console.log("-------------------");
+    // console.log(getLocations(counter));
+    // console.log("-------------------");
 }, 1000);
