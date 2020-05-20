@@ -1,4 +1,4 @@
-// import "../Screens/_mockLocations";
+import "../Screens/_mockLocations";
 import React, { useContext, useCallback } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
