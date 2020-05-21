@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Button, Input } from "react-native-elements";
@@ -13,22 +12,29 @@ const TrackForm = () => {
         changeName,
     } = useContext(LocationContext);
 
-    // console.log(locations.length);
+    console.log(locations.length);
 
     return (
         <View>
             <Spacer>
                 <Input
                     value={name}
-                    placeholder='Enter Track Name'
+                    placeholder="Enter Track Name"
                     onChangeText={changeName}
                 />
             </Spacer>
-            {recording ? (
-                <Button title='Stop' onPress={stopRecording} />
-            ) : (
-                <Button title='Start Recording' onPress={startRecording} />
-            )}
+            <Spacer>
+                {recording ? (
+                    <Button title="Stop" onPress={stopRecording} />
+                ) : (
+                    <Button title="Start Recording" onPress={startRecording} />
+                )}
+            </Spacer>
+            <Spacer>
+                {!recording && locations.length ? (
+                    <Button title="Save" />
+                ) : null}
+            </Spacer>
         </View>
     );
 };
