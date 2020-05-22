@@ -9,6 +9,7 @@ import {
 import { ListItem } from "react-native-elements";
 import { NavigationEvents } from "react-navigation";
 import { Context as TrackContext } from "../Context/TrackContext";
+import { FontAwesome } from "@expo/vector-icons";
 
 const TrackListScreen = ({ navigation }) => {
     const { state, fetchTrack } = useContext(TrackContext);
@@ -36,6 +37,11 @@ const TrackListScreen = ({ navigation }) => {
         </View>
     );
 };
+
+TrackListScreen.navigationOptions = {
+    title: "Track List Screen",
+};
+
 const styles = StyleSheet.create({
     container: {
         fontSize: 48,

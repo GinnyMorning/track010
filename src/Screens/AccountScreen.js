@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-navigation";
 import { Button } from "react-native-elements";
 import { Context as AuthContext } from "../Context/AuthContext";
 import Spacer from "../Components/Spacer";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const AccountScreen = () => {
     const { signOut } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const AccountScreen = () => {
         <SafeAreaView forceInset={{ top: "always" }}>
             <Text style={styles.text}>Account Screen</Text>
             <Spacer>
-                <Button title='Sign Out' onPress={() => signOut()} />
+                <Button title="Sign Out" onPress={() => signOut()} />
             </Spacer>
         </SafeAreaView>
     );
@@ -21,5 +22,12 @@ const styles = StyleSheet.create({
         fontSize: 48,
     },
 });
+
+AccountScreen.navigationOptions = {
+    title: "Account",
+    tabBarIcon: (
+        <MaterialCommunityIcons name="account" size={24} color="black" />
+    ),
+};
 
 export default AccountScreen;
