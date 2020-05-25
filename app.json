@@ -22,10 +22,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.intsw.tracking101",
+      "buildNumber": "1.0.0"
     },
     "android":{
-      "permissions":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"]
+      "package": "com.intsw.tracking101",
+      "versionCode": 1,
+      "permissions":["ACCESS_COARSE_LOCATION","ACCESS_FINE_LOCATION"],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAIWW-NaV75pjipHdLg_6FXdBUtfEp4V5w"
+        }
+      }
     }
   }
 }
