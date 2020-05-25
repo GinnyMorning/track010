@@ -8,41 +8,40 @@ import {
 export default (shouldTrack, callback) => {
     const [err, setErr] = useState(null);
 
+    /*this function will be invoke when shouldTrack value changed, then check the shouldTrack value to start
+    tracking or not */
     useEffect(() => {
         let subscriber;
         const startWatching = async () => {
             try {
-                const { granted } = await requestPermissionsAsync();
-                if (!granted) {
-                    throw new Error("Location permission not granted");
-                }
-
+                await requestPermissionsAsync(); // adb shell pm reset-permissions
                 subscriber = await watchPositionAsync(
                     {
                         accuracy: Accuracy.BestForNavigation,
                         timeInterval: 1000,
                         distanceInterval: 10,
                     },
+                    // (location) => {
+                    //     addLocation(location);
+                    // },
                     callback
                 );
-            } catch (e) {
-                setErr(e);
+                
+            } catch (error) {
+                setErr(error);
+                console.log(err);
             }
         };
 
         if (shouldTrack) {
             startWatching();
         } else {
-            if (subscriber) {
-                subscriber.remove();
-            }
+            if (subscriber) subscriber.remove(); //remove subscriber object
             subscriber = null;
         }
 
         return () => {
-            if (subscriber) {
-                subscriber.remove();
-            }
+            if (subscriber) subscriber.remove();
         };
     }, [shouldTrack, callback]);
 
