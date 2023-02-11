@@ -14,7 +14,7 @@
     "axios": "^0.21.2",
     "expo": "^37.0.11",
     "expo-location": "~8.1.0",
-    "npm-check-updates": "^6.0.1",
+    "npm-check-updates": "^16.7.4",
     "react": "16.13.1",
     "react-devtools": "^4.7.0",
     "react-dom": "~16.13.1",
